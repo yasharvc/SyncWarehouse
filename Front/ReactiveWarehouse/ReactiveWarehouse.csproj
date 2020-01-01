@@ -143,6 +143,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="InventoryHub.cs" />
+    <Compile Include="IoC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -302,6 +303,20 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Contracts\Contracts.csproj">
+      <Project>{6cbfcdf9-18d8-4007-ba1c-265e023d5410}</Project>
+      <Name>Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Models\Models.csproj">
+      <Project>{712854d3-aeec-4739-918e-41b0a933f024}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Repository\Repository.csproj">
+      <Project>{98d87e21-18f4-4e70-a082-f0b659dc7447}</Project>
+      <Name>Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
