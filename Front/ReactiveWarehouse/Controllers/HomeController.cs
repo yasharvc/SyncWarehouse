@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,11 @@ namespace ReactiveWarehouse.Controllers
 	{
 		public ActionResult Index()
 		{
+			var x = IoC.IoC.GetIoC().Resolve<IProductRepository>();
+			x.Insert(new Models.Product
+			{
+				Id = 1
+			});
 			return View();
 		}
 	}

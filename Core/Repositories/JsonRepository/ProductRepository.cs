@@ -9,7 +9,15 @@ namespace JsonRepository
 	{
 		List<Product> products = new List<Product>();
 
-		public ProductRepository() => products = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Product>>(JsonFileProvider.GetJson<ProductRepository>());
+		public ProductRepository()
+		{
+			products = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Product>>(JsonFileProvider.GetJson<ProductRepository>());
+			if (products == null)
+			{
+				products = new List<Product>();
+				Save();
+			}
+		}
 
 		public void Delete(Product entity)
 		{
@@ -26,7 +34,14 @@ namespace JsonRepository
 
 		public void Insert(Product entity)
 		{
-			entity.Id = products.Select(m => m.Id).Max() + 1;
+			try
+			{
+				entity.Id = products.Select(m => m.Id).Max() + 1;
+			}
+			catch
+			{
+				entity.Id = 1;
+			}
 			products.Add(entity);
 			Save();
 		}

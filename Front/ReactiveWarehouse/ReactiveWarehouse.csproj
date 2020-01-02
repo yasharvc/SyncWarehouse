@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Client, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.SignalR.Client.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Client.dll</HintPath>
     </Reference>
@@ -143,7 +146,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="InventoryHub.cs" />
-    <Compile Include="IoC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -308,6 +310,10 @@
     <ProjectReference Include="..\..\Core\Contracts\Contracts.csproj">
       <Project>{6cbfcdf9-18d8-4007-ba1c-265e023d5410}</Project>
       <Name>Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\IoC\IoC.csproj">
+      <Project>{b8d60153-c864-493f-aaa0-84a2ea6c8556}</Project>
+      <Name>IoC</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Core\Models\Models.csproj">
       <Project>{712854d3-aeec-4739-918e-41b0a933f024}</Project>
