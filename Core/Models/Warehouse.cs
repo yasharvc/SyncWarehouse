@@ -1,10 +1,10 @@
 ﻿using Contracts;
-using System;
 
 namespace Models
 {
-	public class Product : BaseModel
+	public class Warehouse : BaseModel
 	{
 		public string Name { get; set; }
+		public string Addresss { get; set; }
 	}
 }
