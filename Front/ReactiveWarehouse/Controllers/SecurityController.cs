@@ -12,5 +12,10 @@ namespace ReactiveWarehouse.Controllers
         {
             return View();
         }
+		[HttpPost]
+		public JsonResult Login(string username,string password)
+		{
+			if()
+		}
     }
 }

@@ -13,6 +13,7 @@ namespace IoC
 		private IoC()
 		{
 			Register<IProductRepository, ProductRepository>();
+			Register<IUserRepository, UserRepository>();
 		}
 
 		public void Register<T, Y>()

@@ -1,7 +1,76 @@
-﻿
-@{
-    ViewBag.Title = "Login";
+﻿@{ 
+	Layout = null;
 }
-<div class="w3-margin-top">
-	<h2>Login</h2>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script src="~/Scripts/axios.min.js"></script>
+	<script src="~/Scripts/vue.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div class="w3-container" id="login">
+
+		<div id="id01" class="w3-modal">
+			<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+				<div class="w3-center">
+					<br>
+					<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+					<img src="http://icons.iconarchive.com/icons/everaldo/crystal-clear/128/App-login-manager-icon.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+				</div>
+
+				<form class="w3-container" action="/action_page.php">
+					<div class="w3-section">
+						<label><b>Username</b></label>
+						<input v-model="usrname" :disabled="inProgress" class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+						<label><b>Password</b></label>
+						<input v-model="password" :disabled="inProgress" class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+						<button class="w3-button w3-block w3-green w3-section w3-padding" :disabled="inProgress" type="submit" v-on:click="login"><i class="fa fa-spin fa-spinner" v-if="inProgress"></i> Login</button>
+					</div>
+				</form>
+
+				<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+					<div class="w3-panel w3-red" v-if="error.length > 0">
+						<p>{{ error }}</p>
+					</div>
+					{{ $data }}
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<script>
+		var data = {
+			usrname: '',
+			password: '',
+			error: '',
+			inProgress: false
+		};
+		document.getElementById('id01').style.display = 'block';
+		var app = new Vue({
+			el: '#login',
+			data: data,
+			methods:
+			{
+				login: function () {
+					app.inProgress = true;
+					axios.post('@Url.Action(nameof(ReactiveWarehouse.Controllers.SecurityController.Login),"Security")', {
+						username: app.username,
+						password: app.password
+					}).then(function (res) {
+						if (res.data.result) {
+							window.location = "@Url.Action(nameof(ReactiveWarehouse.Controllers.HomeController.Index),"Home")"
+						} else {
+
+						}
+					});
+				}
+			}
+		});
+	</script>
+</body>
+</html>
